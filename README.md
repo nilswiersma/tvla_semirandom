@@ -6,11 +6,11 @@
 
 Example:
 ```
-from tvla_semirandom import aes128_semi_random_generator
+from tvla_semirandom import aes_semi_random_generator
 from os import urandom
 
 key = urandom(16)
-tvla_generator = aes128_semi_random_generator(key, 0, 8, 5, 'mix_columns')
+tvla_generator = aes_semi_random_generator(key, 0, 8, 5, 'mix_columns')
 for _ in range(1_000):
     (plain, cipher) = next(tvla_generator)
 ```

@@ -346,12 +346,15 @@ class AESSemi:
         add_round_key(cipher_state, self._key_matrices[0])
         if self.print_states: print(f'{0:3d} {"add_round_key":15s} {matrix2bytes(cipher_state).hex()}')
     
+        return matrix2bytes(cipher_state)
+    
 # Semi generator functions
-def aes128_semi_random_generator(key: bytes, min_hw: int, max_hw: int, bias_round: int, bias_operation: str) -> bytes:
+def aes_semi_random_generator(key: bytes, min_hw: int, max_hw: int, bias_round: int, bias_operation: str) -> bytes:
     """
     Build a generator providing (`plain`, `cipher`) pairs using AES-128, using `key`.
 
     Parameters:
+        - `key`: AES-128, AES-192 or AES-256 key
         - `min_hw`: Minimum hamming weight of biased state.
         - `max_hw`: Maximum hamming weight of biased state.
         - `bias_round`: Round in which to apply bias.
@@ -362,16 +365,17 @@ def aes128_semi_random_generator(key: bytes, min_hw: int, max_hw: int, bias_roun
 
     Example:
     ```
-    from tvla_semirandom import aes128_semi_random_generator
+    from tvla_semirandom import aes_semi_random_generator
     from os import urandom
 
     key = urandom(16)
-    tvla_generator = aes128_semi_random_generator(key, 0, 8, 5, 'mix_columns')
+    tvla_generator = aes_semi_random_generator(key, 0, 8, 5, 'mix_columns')
     for _ in range(1_000):
         (plain, cipher) = next(tvla_generator)
     ```
-
     """
+
+    assert len(key) in [16, 24, 32]
 
     ctx = AESSemi(key)
     hwgen = random_hw_normal(min_hw, max_hw, 128)
