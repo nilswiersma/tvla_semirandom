@@ -34,3 +34,5 @@ jobs:
     - name: Build package
       run: |
         python -m build
+    - name: Upload a build artifacts from dist/
+      uses: actions/upload-artifact@v3.1.2
