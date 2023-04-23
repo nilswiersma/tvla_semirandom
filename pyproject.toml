@@ -1,0 +1,11 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tvla_semirandom"
+version = "0.0.3"
+dependencies = [
+    "scipy",
+    "numpy",
+]
