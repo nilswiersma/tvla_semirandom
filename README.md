@@ -17,7 +17,7 @@ for _ in range(1_000):
 
 Investigate the intermediate states:
 
-```
+<pre>
 from tvla_semirandom import aes_semi_random_generator, AESSemi
 from os import urandom
 
@@ -71,7 +71,7 @@ AESSemi(key, print_states=True).encrypt_block(plain)
 #  11 shift_rows      6be81654d63727352b3d2376557e30fd
 #  11 mix_columns     6b3723fdd63d30542b7e163555e82776
 #  11 add_round_key   519d064894a877c4f7d8267fd88169dc
-#  12 sub_bytes       00420800000100060000008000000001
+<b>#  12 sub_bytes       00420800000100060000008000000001</b>
 #  12 shift_rows      632c3063637c636f636363cd6363637c
 #  12 mix_columns     637c637c636363636363306f632c63cd
 #  12 add_round_key   5d425d42636363633c9ad1281c53c56b
@@ -83,7 +83,7 @@ AESSemi(key, print_states=True).encrypt_block(plain)
 #  14 shift_rows      f7c59c9a4c2e47428eea4632abdc3cf8
 #  14 add_round_key   f72e46f84cea3c9a8edc9c42abc54732
 # b'}\xb1\xea"\x9c\xe1\xe2\x1c1\xd2\x8a\x89\x90D\x9b['
-```
+</pre>
 
 # Run tests
 
