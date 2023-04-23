@@ -14,7 +14,7 @@ from tvla_semirandom import aes_semi_random_generator
 
 
 class TestAESSemi(unittest.TestCase):
-    n_random_cases = 1
+    n_random_cases = 100
 
     @staticmethod
     def generate_random_test_case(keysize_bytes=16, hw_tuple=None):
@@ -146,7 +146,7 @@ class TestAESSemi(unittest.TestCase):
             AESSemi(b'0'*200)
 
 class TestSemiRandomGenerator(unittest.TestCase):
-    n_random_cases = 1
+    n_random_cases = 100
     # TODO check distribution?
 
     def test_valid_hw_values(self):
